@@ -11,6 +11,7 @@ import w2m.travel.spaceshipsservice.model.Serie;
 import w2m.travel.spaceshipsservice.model.Spaceship;
 import w2m.travel.spaceshipsservice.dao.SerieRepository;
 import w2m.travel.spaceshipsservice.dao.SpaceshipJpaRepository;
+import w2m.travel.spaceshipsservice.service.KafkaMessagePublisherService;
 import w2m.travel.spaceshipsservice.service.SpaceshipService;
 import w2m.travel.spaceshipsservice.utility.Util;
 
@@ -25,6 +26,8 @@ public class SpaceshipServiceImpl implements SpaceshipService {
    private final SpaceshipJpaRepository spaceshipJpaRepository;
    private final SerieRepository serieRepository;
    private final SpaceshipBO spaceshipBO;
+   private final KafkaMessagePublisherService kafkaMessagePublisherService;
+
 
    @Override
    @LogService
@@ -58,7 +61,16 @@ public class SpaceshipServiceImpl implements SpaceshipService {
     @Override
     @LogService
     public Spaceship createSpaceship(Spaceship spaceship) {
-        return spaceshipJpaRepository.save(spaceship);
+        Spaceship savedSpaceship = spaceshipJpaRepository.save(spaceship);
+        String message = "Spaceship created: " + savedSpaceship.getName();
+       try{
+           kafkaMessagePublisherService.sendMessageToTopic(message);
+       } catch (Exception ex) {
+           throw new ResourceNotFoundException(
+                   ERROR_KAFKA_SEND_MESSAGE.getCode(),
+                   ERROR_KAFKA_SEND_MESSAGE.getMessage());
+       }
+        return savedSpaceship;
     }
 
     @Override

@@ -13,6 +13,8 @@ public enum Errors {
     ERROR_DATABASE_SPACESHIPS_NOT_FOUND("404102", "Error -> there are no spaceships"),
     ERROR_DATABASE_SERIESS_NOT_FOUND("404103", "Error -> there are no series"),
 
+    ERROR_KAFKA_SEND_MESSAGE("500100", "Error -> to send kafka message"),
+
     ERROR_GENERAL("900000", "Error General -> [%s] %s");
 
     private final String code;
