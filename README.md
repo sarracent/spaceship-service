@@ -25,7 +25,7 @@ The application provides RESTful APIs to manage spaceships and their associated 
 ### Installation
 1. **Clone the repository**:
     ```bash
-    git clone [repository-url]
+    git clone https://github.com/sarracent/spaceship-service.git
     cd spaceshipsservice
     ```
 
