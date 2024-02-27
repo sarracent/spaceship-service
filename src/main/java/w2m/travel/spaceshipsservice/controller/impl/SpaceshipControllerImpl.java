@@ -6,6 +6,9 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+import w2m.travel.spaceshipsservice.annotations.auditable.AuditableApi;
+import w2m.travel.spaceshipsservice.annotations.auditable.AuditableParamIgnore;
+import w2m.travel.spaceshipsservice.annotations.auditable.AuditableReturn;
 import w2m.travel.spaceshipsservice.controller.SpaceshipController;
 import w2m.travel.spaceshipsservice.model.Serie;
 import w2m.travel.spaceshipsservice.model.Spaceship;
@@ -13,6 +16,7 @@ import w2m.travel.spaceshipsservice.model.response.*;
 import w2m.travel.spaceshipsservice.service.SpaceshipService;
 
 import java.net.URI;
+import java.util.Map;
 
 import static w2m.travel.spaceshipsservice.constants.Constants.*;
 
@@ -22,6 +26,10 @@ public class SpaceshipControllerImpl implements SpaceshipController {
     private final SpaceshipService spaceshipService;
 
     @Override
+    @AuditableApi(
+            description = "getAllSpaceships Api",
+            parameterIgnore = @AuditableParamIgnore(nameToAudit = "httpHeadersMap", type = Map.class),
+            returnMethod = @AuditableReturn(type = SpaceshipsResponse.class))
     public ResponseEntity<SpaceshipsResponse> getAllSpaceships(
             @PageableDefault(page = 0, size = 20) Pageable pageable) {
         var response = SpaceshipsResponse.builder()

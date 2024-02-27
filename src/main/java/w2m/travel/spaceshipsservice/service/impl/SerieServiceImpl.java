@@ -2,6 +2,7 @@ package w2m.travel.spaceshipsservice.service.impl;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+import w2m.travel.spaceshipsservice.annotations.log.LogService;
 import w2m.travel.spaceshipsservice.exception.impl.ResourceNotFoundException;
 import w2m.travel.spaceshipsservice.model.Serie;
 import w2m.travel.spaceshipsservice.repository.SerieRepository;
@@ -24,6 +25,7 @@ public class SerieServiceImpl implements SerieService {
     }
 
     @Override
+    @LogService
     public List<Serie> getAllSeries() {
         List<Serie> series = serieRepository.findAll();
     if (Util.isNullOrEmpty(series)) {

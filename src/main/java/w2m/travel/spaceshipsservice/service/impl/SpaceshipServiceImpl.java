@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import w2m.travel.spaceshipsservice.annotations.log.LogService;
 import w2m.travel.spaceshipsservice.exception.impl.ResourceNotFoundException;
 import w2m.travel.spaceshipsservice.model.Serie;
 import w2m.travel.spaceshipsservice.model.Spaceship;
@@ -24,6 +25,7 @@ public class SpaceshipServiceImpl implements SpaceshipService {
    private final SerieRepository serieRepository;
 
    @Override
+   @LogService
    public Page<Spaceship> getAllSpaceships(Pageable pageable) {
        Page<Spaceship> spaceshipPage = spaceshipRepository.findAll(pageable);
        if (spaceshipPage.isEmpty()) {
@@ -35,6 +37,7 @@ public class SpaceshipServiceImpl implements SpaceshipService {
    }
 
     @Override
+    @LogService
     public Spaceship getSpaceshipById(int id) {
         return spaceshipRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException(
@@ -43,6 +46,7 @@ public class SpaceshipServiceImpl implements SpaceshipService {
     }
 
     @Override
+    @LogService
     public List<Spaceship> getSpaceshipsByNameContaining(String name) {
        List<Spaceship> spaceshipList = spaceshipRepository.findByNameContainingIgnoreCase(name);
         if (Util.isNullOrEmpty(spaceshipList))
@@ -53,11 +57,13 @@ public class SpaceshipServiceImpl implements SpaceshipService {
     }
 
     @Override
+    @LogService
     public Spaceship createSpaceship(Spaceship spaceship) {
         return spaceshipRepository.save(spaceship);
     }
 
     @Override
+    @LogService
     public void deleteSpaceship(int id) {
         if (!spaceshipRepository.existsById(id)) {
             throw new ResourceNotFoundException(
@@ -68,6 +74,7 @@ public class SpaceshipServiceImpl implements SpaceshipService {
     }
 
     @Override
+    @LogService
     public Spaceship updateSpaceship(int id, Spaceship spaceshipDetails) {
         Spaceship spaceship = spaceshipRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException(
@@ -83,6 +90,7 @@ public class SpaceshipServiceImpl implements SpaceshipService {
     }
 
     @Override
+    @LogService
     public Serie createSerieForSpaceship(int id, Serie serie) {
         var spaceship = getSpaceshipById(id);
         serie.setSpaceship(spaceship);
