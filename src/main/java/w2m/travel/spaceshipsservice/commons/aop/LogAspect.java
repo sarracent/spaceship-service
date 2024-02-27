@@ -74,7 +74,7 @@ public class LogAspect {
         return response;
     }
 
-    @Around("@annotation(w2m.travel.spaceshipsservice.annotations.log.LogService)")
+    @Around("@annotation(w2m.travel.spaceshipsservice.annotations.log.LogService) || @annotation(w2m.travel.spaceshipsservice.annotations.log.LogBO) || @annotation(w2m.travel.spaceshipsservice.annotations.log.LogDAO)")
     public Object logOperationTime(ProceedingJoinPoint jp) throws Throwable {
         long start = System.currentTimeMillis();
         Object proceed = jp.proceed();

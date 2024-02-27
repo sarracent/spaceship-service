@@ -3,16 +3,16 @@
 
 RUN SERVICE: 
 Building a Docker image:
-docker build -t spaceship-service .
+docker-compose build
 
-Running the container in detached mode:
-docker run -d -p8080:8080 -e "SPRING_PROFILES_ACTIVE=docker" --name my-prd-srv spaceship-service
+Running containers:
+docker-compose up -d
 
 Get the log output from our container:
-docker logs my-prd-srv -f
+docker-compose logs -f
 
-Stopping and removing the container:
-docker rm -f my-prd-srv
+Stopping containers:
+docker-compose down
 
 
 

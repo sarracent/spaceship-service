@@ -14,6 +14,8 @@ public class Constants {
     public static final String N = "N";
     public static final String OPNAME = "%s.%s";
     public static final String PARSE_EXCEPTION = "%s - Line Code Error: %s";
+    public static final String PREFIX_CACHE_SPACESHIP="pre:spaceship:1";
+    public static final String UNDERSCORE = "_";
 
     public Constants() {
     }

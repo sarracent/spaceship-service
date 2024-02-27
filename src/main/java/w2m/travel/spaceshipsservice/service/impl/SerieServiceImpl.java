@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 import w2m.travel.spaceshipsservice.annotations.log.LogService;
 import w2m.travel.spaceshipsservice.exception.impl.ResourceNotFoundException;
 import w2m.travel.spaceshipsservice.model.Serie;
-import w2m.travel.spaceshipsservice.repository.SerieRepository;
+import w2m.travel.spaceshipsservice.dao.SerieRepository;
 import w2m.travel.spaceshipsservice.service.SerieService;
 import w2m.travel.spaceshipsservice.utility.Util;
 

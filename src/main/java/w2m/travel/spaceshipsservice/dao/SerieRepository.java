@@ -1,4 +1,4 @@
-package w2m.travel.spaceshipsservice.repository;
+package w2m.travel.spaceshipsservice.dao;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
