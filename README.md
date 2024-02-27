@@ -1,10 +1,14 @@
 # Spaceships Service - Core Application
 
-This repository hosts the core application for the management of spaceships and series within the `spaceshipsservice` project.
+This repository hosts the core application for the management of spaceships and series within the `spaceshipsservice` 
+project. The application provides secure RESTful APIs to manage spaceships and their associated series, allowing for 
+operations such as retrieving, creating, updating, and deleting spaceships, as well as managing series related to these spaceships.
 
 ## Overview
 
-The application provides RESTful APIs to manage spaceships and their associated series. It allows for operations such as retrieving, creating, updating, and deleting spaceships, as well as managing series related to these spaceships.
+The Spaceships Service is a secured application that provides various endpoints to manage the lifecycle of spaceships 
+and series. It is designed with basic security configurations to protect the resources and ensure that only authenticated 
+and authorized users have access to the functionalities.
 
 ## Features
 
@@ -20,6 +24,22 @@ The application provides RESTful APIs to manage spaceships and their associated 
 ### Series Management
 - **Create Series**: Create a new series record.
 - **List All Series**: Retrieve all series records.
+
+## Technical Details
+
+- **Database**: Uses an H2 in-memory database for storing spaceship and series data.
+- **Testing**: Includes unit testing for classes and integration tests for the service.
+- **Logging Aspect**: Custom aspect for logging all operations
+- **Caching**: Using Redis for frequently accessed data.
+- **Security**: Basic security configuration to protect API endpoints.
+
+## Optional Improvements
+         
+- **Database DDL Scripts**: Use of libraries like Liquibase for database version control.
+- **Dockerization**: Containerization of the application for easy deployment.
+- **API Documentation**: Detailed API documentation with tools like Swagger.
+- **Message Broker Integration**: Implementation of a producer pattern using Kafka.
+
 
 ## Setup
 ### Installation
