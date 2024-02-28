@@ -40,6 +40,24 @@ and authorized users have access to the functionalities.
 - **API Documentation**: Detailed API documentation with tools like Swagger.
 - **Message Broker Integration**: Implementation of a producer pattern using Kafka.
 
+## Usage Examples
+
+Below is an example of how to interact with the Spaceships API using cURL. This example demonstrates creating 
+a new spaceship with Basic Authentication.
+
+### Create a New Spaceship
+  ```bash
+    curl --location 'http://localhost:8080/spaceships' \
+    --header 'Content-Type: application/json' \
+    --header 'Authorization: Basic YWRtaW46YWRtaW4=' \
+    --header 'Cookie: JSESSIONID=4B2221B24ADA6AF2BD33C36F9D0EA43B' \
+    --data '{
+        "manufacturingDate": "1992-08-27",
+        "name": "x-zc",
+        "model": "rx-111",
+        "color": "blue"
+    }'
+   ```
 
 ## Setup
 ### Installation
@@ -52,7 +70,6 @@ and authorized users have access to the functionalities.
 2. **Build the application**:
     ```bash
     mvn clean install
-
     ```
    
 3. **Build Docker images**:
