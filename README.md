@@ -31,13 +31,27 @@ and authorized users have access to the functionalities.
 - **Testing**: Includes unit testing for classes and integration tests for the service.
 - **Logging Aspect**: Custom aspect for logging all operations
 - **Caching**: Using Redis for frequently accessed data.
-- **Security**: Basic security configuration to protect API endpoints.
-
+- **Security**: Basic security configuration to protect API endpoints. For development purposes only
+    ```bash
+     spring.security.user.name=admin
+     spring.security.user.password=admin
+    ```
 ## Optional Improvements
          
 - **Database DDL Scripts**: Use of libraries like Liquibase for database version control.
 - **Dockerization**: Containerization of the application for easy deployment.
+    This service is designed to be run as a set of Docker containers using Docker Compose.
+    Images:
+    ```bash
+      spaceships-service-app
+      wurstmeister/kafka:latest 
+      wurstmeister/zookeeper:latest
+      redis:latest
+    ```
 - **API Documentation**: Detailed API documentation with tools like Swagger.
+    ```bash
+      http://localhost:8080/swagger-ui.html
+    ```
 - **Message Broker Integration**: Implementation of a producer pattern using Kafka.
 
 ## Usage Examples
